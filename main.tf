@@ -161,4 +161,11 @@ resource "proxmox_vm_qemu" "this" {
       usb3       = lookup(usb.value, "usb3", false)
     }
   }
+
+  lifecycle {
+    ignore_changes = [
+      disk,
+      sshkeys
+    ]
+  }
 }

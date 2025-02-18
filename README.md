@@ -12,7 +12,7 @@ specify the required variables and run the command `terraform init`.
 ```hcl
 module "proxmox_vm_qemu" {
   source  = "gitlab.com/terraform-child-modules-48151/terraform-proxmox-vm-qemu/local"
-  version = "1.0.0"
+  version = "1.0.1"
 }
 ```
 
