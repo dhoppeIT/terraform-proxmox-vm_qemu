@@ -22,13 +22,13 @@ module "proxmox_vm_qemu" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 3.0.1-rc7 |
+| <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 3.0.1-rc8 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_proxmox"></a> [proxmox](#provider\_proxmox) | 3.0.1-rc7 |
+| <a name="provider_proxmox"></a> [proxmox](#provider\_proxmox) | 3.0.1-rc8 |
 
 ## Modules
 
@@ -38,7 +38,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [proxmox_vm_qemu.this](https://registry.terraform.io/providers/telmate/proxmox/3.0.1-rc7/docs/resources/vm_qemu) | resource |
+| [proxmox_vm_qemu.this](https://registry.terraform.io/providers/telmate/proxmox/3.0.1-rc8/docs/resources/vm_qemu) | resource |
 
 ## Inputs
 
