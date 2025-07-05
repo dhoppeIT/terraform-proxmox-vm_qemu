@@ -1,6 +1,7 @@
 resource "proxmox_vm_qemu" "this" {
   name                        = var.name
   target_node                 = var.target_node
+  target_nodes                = var.target_nodes
   vmid                        = var.vmid
   desc                        = var.desc
   define_connection_info      = var.define_connection_info
@@ -138,6 +139,7 @@ resource "proxmox_vm_qemu" "this" {
       vendor_id     = lookup(pci.value, "vendor_id", null)
       sub_device_id = lookup(pci.value, "sub_device_id", null)
       sub_vendor_id = lookup(pci.value, "sub_vendor_id", null)
+      mdev          = lookup(pci.value, "mdev", null)
     }
   }
 

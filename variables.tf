@@ -5,7 +5,14 @@ variable "name" {
 
 variable "target_node" {
   type        = string
+  default     = null
   description = "The name of the Proxmox Node on which to place the VM"
+}
+
+variable "target_nodes" {
+  type        = list(string)
+  default     = null
+  description = "A list of PVE node names on which to place the VM"
 }
 
 variable "vmid" {
@@ -306,7 +313,7 @@ variable "skip_ipv6" {
 
 variable "agent_timeout" {
   type        = number
-  default     = 60
+  default     = 90
   description = "Timeout in seconds to keep trying to obtain an IP address from the guest agent one we have a connection"
 }
 

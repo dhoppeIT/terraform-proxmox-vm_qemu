@@ -22,13 +22,13 @@ module "proxmox_vm_qemu" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 3.0.1-rc9 |
+| <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 3.0.1-rc7 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_proxmox"></a> [proxmox](#provider\_proxmox) | 3.0.1-rc9 |
+| <a name="provider_proxmox"></a> [proxmox](#provider\_proxmox) | 3.0.1-rc7 |
 
 ## Modules
 
@@ -38,14 +38,14 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [proxmox_vm_qemu.this](https://registry.terraform.io/providers/telmate/proxmox/3.0.1-rc9/docs/resources/vm_qemu) | resource |
+| [proxmox_vm_qemu.this](https://registry.terraform.io/providers/telmate/proxmox/3.0.1-rc7/docs/resources/vm_qemu) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_agent"></a> [agent](#input\_agent) | Set to 1 to enable the QEMU Guest Agent | `number` | `0` | no |
-| <a name="input_agent_timeout"></a> [agent\_timeout](#input\_agent\_timeout) | Timeout in seconds to keep trying to obtain an IP address from the guest agent one we have a connection | `number` | `60` | no |
+| <a name="input_agent_timeout"></a> [agent\_timeout](#input\_agent\_timeout) | Timeout in seconds to keep trying to obtain an IP address from the guest agent one we have a connection | `number` | `90` | no |
 | <a name="input_automatic_reboot"></a> [automatic\_reboot](#input\_automatic\_reboot) | Automatically reboot the VM when parameter changes require this | `bool` | `true` | no |
 | <a name="input_balloon"></a> [balloon](#input\_balloon) | The minimum amount of memory to allocate to the VM in Megabytes, when Automatic Memory Allocation is desired | `number` | `0` | no |
 | <a name="input_bios"></a> [bios](#input\_bios) | The BIOS to use, options are seabios or ovmf for UEFI | `string` | `"seabios"` | no |
@@ -97,7 +97,8 @@ No modules.
 | <a name="input_startup"></a> [startup](#input\_startup) | The startup and shutdown behaviour | `string` | `""` | no |
 | <a name="input_tablet"></a> [tablet](#input\_tablet) | Enable/disable the USB tablet device | `bool` | `true` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags of the VM | `string` | `null` | no |
-| <a name="input_target_node"></a> [target\_node](#input\_target\_node) | The name of the Proxmox Node on which to place the VM | `string` | n/a | yes |
+| <a name="input_target_node"></a> [target\_node](#input\_target\_node) | The name of the Proxmox Node on which to place the VM | `string` | `null` | no |
+| <a name="input_target_nodes"></a> [target\_nodes](#input\_target\_nodes) | A list of PVE node names on which to place the VM | `list(string)` | `null` | no |
 | <a name="input_usb"></a> [usb](#input\_usb) | The usb block is used to configure USB devices | `list(any)` | `[]` | no |
 | <a name="input_vcpus"></a> [vcpus](#input\_vcpus) | The number of vCPUs plugged into the VM when it starts | `number` | `0` | no |
 | <a name="input_vga"></a> [vga](#input\_vga) | The vga block is used to configure the display device | `list(any)` | `[]` | no |
