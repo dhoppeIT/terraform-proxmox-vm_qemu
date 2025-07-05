@@ -135,36 +135,6 @@ variable "balloon" {
   description = "The minimum amount of memory to allocate to the VM in Megabytes, when Automatic Memory Allocation is desired"
 }
 
-variable "sockets" {
-  type        = number
-  default     = 1
-  description = "The number of CPU sockets to allocate to the VM"
-}
-
-variable "cores" {
-  type        = number
-  default     = 1
-  description = "The number of CPU cores per CPU socket to allocate to the VM"
-}
-
-variable "vcpus" {
-  type        = number
-  default     = 0
-  description = "The number of vCPUs plugged into the VM when it starts"
-}
-
-variable "cpu_type" {
-  type        = string
-  default     = "host"
-  description = "The type of CPU to emulate in the Guest"
-}
-
-variable "numa" {
-  type        = bool
-  default     = false
-  description = "Whether to enable Non-Uniform Memory Access in the guest"
-}
-
 variable "hotplug" {
   type        = string
   default     = "network,disk,usb"
@@ -315,6 +285,12 @@ variable "agent_timeout" {
   type        = number
   default     = 90
   description = "Timeout in seconds to keep trying to obtain an IP address from the guest agent one we have a connection"
+}
+
+variable "cpu" {
+  type        = map(any)
+  default     = {}
+  description = "The cpu block is used to configure the CPU settings"
 }
 
 variable "vga" {

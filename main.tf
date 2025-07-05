@@ -22,11 +22,6 @@ resource "proxmox_vm_qemu" "this" {
   qemu_os                     = var.qemu_os
   memory                      = var.memory
   balloon                     = var.balloon
-  sockets                     = var.sockets
-  cores                       = var.cores
-  vcpus                       = var.vcpus
-  cpu_type                    = var.cpu_type
-  numa                        = var.numa
   hotplug                     = var.hotplug
   scsihw                      = var.scsihw
   pool                        = var.pool
@@ -52,6 +47,21 @@ resource "proxmox_vm_qemu" "this" {
   skip_ipv4                   = var.skip_ipv4
   skip_ipv6                   = var.skip_ipv6
   agent_timeout               = var.agent_timeout
+
+  dynamic "cpu" {
+    for_each = length(var.cpu) > 0 ? [var.cpu] : []
+
+    content {
+      affinity = lookup(cpu.value, "affinity", "")
+      cores    = lookup(cpu.value, "cores", 1)
+      limit    = lookup(cpu.value, "limit", 0)
+      numa     = lookup(cpu.value, "numa", false)
+      sockets  = lookup(cpu.value, "sockets", 1)
+      type     = lookup(cpu.value, "type", "host")
+      units    = lookup(cpu.value, "units", 0)
+      vcores   = lookup(cpu.value, "vcores", 0)
+    }
+  }
 
   dynamic "vga" {
     for_each = length(var.vga) > 0 ? var.vga : []

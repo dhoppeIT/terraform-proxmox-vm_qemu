@@ -10,8 +10,11 @@ module "proxmox_vm_qemu" {
   vmid    = 8000
 
   # Hardware
-  cores  = 2
   memory = 2048
+
+  cpu = {
+    cores = 2
+  }
 
   disk = [
     {
