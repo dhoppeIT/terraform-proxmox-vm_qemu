@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0](https://gitlab.com/terraform-child-modules-48151/terraform-proxmox-vm_qemu/compare/v1.2.0...v1.3.0) (2025-08-07)
+
+### Features
+
+* **terraform:** Add support for Proxmox 3.0.2-rc03 ([d2cd3f8](https://gitlab.com/terraform-child-modules-48151/terraform-proxmox-vm_qemu/commit/d2cd3f8c64ed90f128769909ee84143dafe1306f))
+
 ## [1.2.0](https://gitlab.com/terraform-child-modules-48151/terraform-proxmox-vm_qemu/compare/v1.1.0...v1.2.0) (2025-07-05)
 
 ### Features
