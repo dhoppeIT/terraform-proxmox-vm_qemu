@@ -17,7 +17,7 @@ variable "target_nodes" {
 
 variable "vmid" {
   type        = number
-  default     = 0
+  default     = null
   description = "The ID of the VM in Proxmox"
 }
 
@@ -267,6 +267,12 @@ variable "automatic_reboot" {
   type        = bool
   default     = true
   description = "Automatically reboot the VM when parameter changes require this"
+}
+
+variable "automatic_reboot_severity" {
+  type        = string
+  default     = "error"
+  description = "Sets the severity of the error/warning when `automatic_reboot` is `false`"
 }
 
 variable "skip_ipv4" {

@@ -44,6 +44,7 @@ resource "proxmox_vm_qemu" "this" {
   ipconfig0                   = var.ipconfig0
   ipconfig1                   = var.ipconfig1
   automatic_reboot            = var.automatic_reboot
+  automatic_reboot_severity   = var.automatic_reboot_severity
   skip_ipv4                   = var.skip_ipv4
   skip_ipv6                   = var.skip_ipv6
   agent_timeout               = var.agent_timeout
