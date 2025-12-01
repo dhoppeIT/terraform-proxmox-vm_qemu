@@ -22,13 +22,13 @@ module "proxmox_vm_qemu" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 3.0.2-rc05 |
+| <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 3.0.2-rc06 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_proxmox"></a> [proxmox](#provider\_proxmox) | 3.0.2-rc05 |
+| <a name="provider_proxmox"></a> [proxmox](#provider\_proxmox) | 3.0.2-rc06 |
 
 ## Modules
 
@@ -38,7 +38,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [proxmox_vm_qemu.this](https://registry.terraform.io/providers/telmate/proxmox/3.0.2-rc05/docs/resources/vm_qemu) | resource |
+| [proxmox_vm_qemu.this](https://registry.terraform.io/providers/telmate/proxmox/3.0.2-rc06/docs/resources/vm_qemu) | resource |
 
 ## Inputs
 
@@ -60,7 +60,7 @@ No modules.
 | <a name="input_clone_id"></a> [clone\_id](#input\_clone\_id) | The base VM id from which to clone to create the new VM | `number` | `null` | no |
 | <a name="input_cpu"></a> [cpu](#input\_cpu) | The cpu block is used to configure the CPU settings | `map(any)` | `{}` | no |
 | <a name="input_define_connection_info"></a> [define\_connection\_info](#input\_define\_connection\_info) | Whether to let terraform define the (SSH) connection parameters for preprovisioners | `bool` | `true` | no |
-| <a name="input_desc"></a> [desc](#input\_desc) | The description of the VM | `string` | `null` | no |
+| <a name="input_description"></a> [description](#input\_description) | The description of the VM | `string` | `null` | no |
 | <a name="input_disk"></a> [disk](#input\_disk) | The disk block is used to configure the disk devices | `list(any)` | `[]` | no |
 | <a name="input_efidisk"></a> [efidisk](#input\_efidisk) | The efidisk block is used to configure the disk used for EFI data storage | `map(any)` | `{}` | no |
 | <a name="input_force_create"></a> [force\_create](#input\_force\_create) | If false, and a VM of the same name, on the same node exists, terraform will attempt to reconfigure that VM with these settings | `bool` | `false` | no |
@@ -75,7 +75,6 @@ No modules.
 | <a name="input_name"></a> [name](#input\_name) | The name of the VM within Proxmox | `string` | n/a | yes |
 | <a name="input_nameserver"></a> [nameserver](#input\_nameserver) | Sets default DNS server for guest | `string` | `null` | no |
 | <a name="input_network"></a> [network](#input\_network) | The network block is used to configure the network devices | `list(any)` | `[]` | no |
-| <a name="input_onboot"></a> [onboot](#input\_onboot) | Whether to have the VM startup after the PVE node starts | `bool` | `false` | no |
 | <a name="input_os_network_config"></a> [os\_network\_config](#input\_os\_network\_config) | Network configuration to be copied into the VM when preprovisioning ubuntu or centos guests | `string` | `null` | no |
 | <a name="input_os_type"></a> [os\_type](#input\_os\_type) | Which provisioning method to use, based on the OS type | `string` | `null` | no |
 | <a name="input_pci"></a> [pci](#input\_pci) | The pci block is used to configure PCI devices | `list(any)` | `[]` | no |
@@ -92,7 +91,7 @@ No modules.
 | <a name="input_ssh_private_key"></a> [ssh\_private\_key](#input\_ssh\_private\_key) | The private key to use when connecting to the guest for preprovisioning | `string` | `null` | no |
 | <a name="input_ssh_user"></a> [ssh\_user](#input\_ssh\_user) | The user with which to connect to the guest for preprovisioning | `string` | `null` | no |
 | <a name="input_sshkeys"></a> [sshkeys](#input\_sshkeys) | Newline delimited list of SSH public keys to add to authorized keys file for the cloud-init user | `string` | `null` | no |
-| <a name="input_startup"></a> [startup](#input\_startup) | The startup and shutdown behaviour | `string` | `""` | no |
+| <a name="input_start_at_node_boot"></a> [start\_at\_node\_boot](#input\_start\_at\_node\_boot) | Whether the guest should start automatically when the Proxmox node boots | `bool` | `false` | no |
 | <a name="input_tablet"></a> [tablet](#input\_tablet) | Enable/disable the USB tablet device | `bool` | `true` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags of the VM | `string` | `null` | no |
 | <a name="input_target_node"></a> [target\_node](#input\_target\_node) | The name of the Proxmox Node on which to place the VM | `string` | `null` | no |

@@ -54,6 +54,6 @@ module "proxmox_vm_qemu" {
   sshkeys      = file("${path.module}/sshkeys.txt")
 
   # Options
-  agent  = 1
-  onboot = true
+  agent              = 1
+  start_at_node_boot = true
 }

@@ -21,7 +21,7 @@ variable "vmid" {
   description = "The ID of the VM in Proxmox"
 }
 
-variable "desc" {
+variable "description" {
   type        = string
   default     = null
   description = "The description of the VM"
@@ -39,16 +39,10 @@ variable "bios" {
   description = "The BIOS to use, options are seabios or ovmf for UEFI"
 }
 
-variable "onboot" {
+variable "start_at_node_boot" {
   type        = bool
   default     = false
-  description = "Whether to have the VM startup after the PVE node starts"
-}
-
-variable "startup" {
-  type        = string
-  default     = ""
-  description = "The startup and shutdown behaviour"
+  description = "Whether the guest should start automatically when the Proxmox node boots"
 }
 
 variable "vm_state" {

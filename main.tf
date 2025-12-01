@@ -3,11 +3,10 @@ resource "proxmox_vm_qemu" "this" {
   target_node                 = var.target_node
   target_nodes                = var.target_nodes
   vmid                        = var.vmid
-  desc                        = var.desc
+  description                 = var.description
   define_connection_info      = var.define_connection_info
   bios                        = var.bios
-  onboot                      = var.onboot
-  startup                     = var.startup
+  start_at_node_boot          = var.start_at_node_boot
   vm_state                    = var.vm_state
   protection                  = var.protection
   tablet                      = var.tablet
