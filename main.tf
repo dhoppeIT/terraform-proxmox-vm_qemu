@@ -7,9 +7,10 @@ resource "proxmox_vm_qemu" "this" {
   define_connection_info      = var.define_connection_info
   bios                        = var.bios
   start_at_node_boot          = var.start_at_node_boot
-  vm_state                    = var.vm_state
+  power_state                 = var.power_state
   protection                  = var.protection
   tablet                      = var.tablet
+  boot                        = var.boot
   bootdisk                    = var.bootdisk
   agent                       = var.agent
   pxe                         = var.pxe
@@ -60,6 +61,25 @@ resource "proxmox_vm_qemu" "this" {
       type     = lookup(cpu.value, "type", "host")
       units    = lookup(cpu.value, "units", 0)
       vcores   = lookup(cpu.value, "vcores", 0)
+
+      dynamic "flags" {
+        for_each = lookup(cpu.value, "flags", null) != null ? [cpu.value.flags] : []
+
+        content {
+          md_clear    = lookup(flags.value, "md_clear", null)
+          pcid        = lookup(flags.value, "pcid", null)
+          spec_ctrl   = lookup(flags.value, "spec_ctrl", null)
+          ssbd        = lookup(flags.value, "ssbd", null)
+          ibpb        = lookup(flags.value, "ibpb", null)
+          virt_ssbd   = lookup(flags.value, "virt_ssbd", null)
+          amd_ssbd    = lookup(flags.value, "amd_ssbd", null)
+          amd_no_ssb  = lookup(flags.value, "amd_no_ssb", null)
+          pbpe1gb     = lookup(flags.value, "pbpe1gb", null)
+          hv_tlbflush = lookup(flags.value, "hv_tlbflush", null)
+          hv_evmcs    = lookup(flags.value, "hv_evmcs", null)
+          aes         = lookup(flags.value, "aes", null)
+        }
+      }
     }
   }
 
@@ -171,6 +191,49 @@ resource "proxmox_vm_qemu" "this" {
       mapping_id = lookup(usb.value, "mapping_id", null)
       port_id    = lookup(usb.value, "port_id", null)
       usb3       = lookup(usb.value, "usb3", false)
+    }
+  }
+
+  dynamic "startup_shutdown" {
+    for_each = length(var.startup_shutdown) > 0 ? [var.startup_shutdown] : []
+
+    content {
+      order            = lookup(startup_shutdown.value, "order", -1)
+      shutdown_timeout = lookup(startup_shutdown.value, "shutdown_timeout", -1)
+      startup_delay    = lookup(startup_shutdown.value, "startup_delay", -1)
+    }
+  }
+
+  dynamic "rng" {
+    for_each = length(var.rng) > 0 ? [var.rng] : []
+
+    content {
+      limit  = lookup(rng.value, "limit", 1024)
+      period = lookup(rng.value, "period", null)
+      source = lookup(rng.value, "source", "/dev/urandom")
+    }
+  }
+
+  dynamic "tpm_state" {
+    for_each = length(var.tpm_state) > 0 ? [var.tpm_state] : []
+
+    content {
+      storage = tpm_state.value.storage
+      version = lookup(tpm_state.value, "version", "v2.0")
+    }
+  }
+
+  dynamic "smbios" {
+    for_each = length(var.smbios) > 0 ? [var.smbios] : []
+
+    content {
+      family       = lookup(smbios.value, "family", null)
+      manufacturer = lookup(smbios.value, "manufacturer", null)
+      serial       = lookup(smbios.value, "serial", null)
+      product      = lookup(smbios.value, "product", null)
+      sku          = lookup(smbios.value, "sku", null)
+      uuid         = lookup(smbios.value, "uuid", null)
+      version      = lookup(smbios.value, "version", null)
     }
   }
 

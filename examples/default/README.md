@@ -21,9 +21,9 @@ command `terraform destroy` when the resources are no longer needed.
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 3.0.2-rc06 |
+| <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 3.0.2-rc08 |
 
 ## Providers
 
@@ -32,7 +32,7 @@ No providers.
 ## Modules
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | <a name="module_proxmox_vm_qemu"></a> [proxmox\_vm\_qemu](#module\_proxmox\_vm\_qemu) | ../../ | n/a |
 
 ## Resources
@@ -42,7 +42,7 @@ No resources.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_pm_api_token_id"></a> [pm\_api\_token\_id](#input\_pm\_api\_token\_id) | This is an API token you have previously created for a specific user | `string` | `null` | no |
 | <a name="input_pm_api_token_secret"></a> [pm\_api\_token\_secret](#input\_pm\_api\_token\_secret) | This uuid is only available when the token was initially created | `string` | `null` | no |
 | <a name="input_pm_api_url"></a> [pm\_api\_url](#input\_pm\_api\_url) | This is the target Proxmox API endpoint | `string` | n/a | yes |
@@ -61,7 +61,7 @@ No resources.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_default_ipv4_address"></a> [default\_ipv4\_address](#output\_default\_ipv4\_address) | The default IPv4 address |
 | <a name="output_default_ipv6_address"></a> [default\_ipv6\_address](#output\_default\_ipv6\_address) | The default IPv6 address |
 | <a name="output_ssh_host"></a> [ssh\_host](#output\_ssh\_host) | The hostname or IP to use to connect to the VM for preprovisioning |

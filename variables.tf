@@ -45,10 +45,16 @@ variable "start_at_node_boot" {
   description = "Whether the guest should start automatically when the Proxmox node boots"
 }
 
-variable "vm_state" {
+variable "startup_shutdown" {
+  type        = map(any)
+  default     = {}
+  description = "Startup and shutdown configuration of the guest"
+}
+
+variable "power_state" {
   type        = string
-  default     = "running"
-  description = "The desired state of the VM, options are running, stopped and started"
+  default     = null
+  description = "Power state of the guest, can be running or stopped"
 }
 
 variable "protection" {
@@ -61,6 +67,12 @@ variable "tablet" {
   type        = bool
   default     = true
   description = "Enable/disable the USB tablet device"
+}
+
+variable "boot" {
+  type        = string
+  default     = null
+  description = "The boot order for the VM. For example: order=scsi0;ide2;net0"
 }
 
 variable "bootdisk" {
@@ -285,6 +297,24 @@ variable "agent_timeout" {
   type        = number
   default     = 90
   description = "Timeout in seconds to keep trying to obtain an IP address from the guest agent one we have a connection"
+}
+
+variable "rng" {
+  type        = map(any)
+  default     = {}
+  description = "The RNG device to add to the VM"
+}
+
+variable "tpm_state" {
+  type        = map(any)
+  default     = {}
+  description = "The TPM device to add to the VM"
+}
+
+variable "smbios" {
+  type        = map(any)
+  default     = {}
+  description = "SMBIOS type 1 settings for the VM"
 }
 
 variable "cpu" {

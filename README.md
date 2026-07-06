@@ -20,15 +20,15 @@ module "proxmox_vm_qemu" {
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 3.0.2-rc07 |
+| <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 3.0.2-rc08 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
-| <a name="provider_proxmox"></a> [proxmox](#provider\_proxmox) | 3.0.2-rc07 |
+| ---- | ------- |
+| <a name="provider_proxmox"></a> [proxmox](#provider\_proxmox) | 3.0.2-rc08 |
 
 ## Modules
 
@@ -37,19 +37,20 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
-| [proxmox_vm_qemu.this](https://registry.terraform.io/providers/telmate/proxmox/3.0.2-rc07/docs/resources/vm_qemu) | resource |
+| ---- | ---- |
+| [proxmox_vm_qemu.this](https://registry.terraform.io/providers/telmate/proxmox/3.0.2-rc08/docs/resources/vm_qemu) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_agent"></a> [agent](#input\_agent) | Set to 1 to enable the QEMU Guest Agent | `number` | `0` | no |
 | <a name="input_agent_timeout"></a> [agent\_timeout](#input\_agent\_timeout) | Timeout in seconds to keep trying to obtain an IP address from the guest agent one we have a connection | `number` | `90` | no |
 | <a name="input_automatic_reboot"></a> [automatic\_reboot](#input\_automatic\_reboot) | Automatically reboot the VM when parameter changes require this | `bool` | `true` | no |
 | <a name="input_automatic_reboot_severity"></a> [automatic\_reboot\_severity](#input\_automatic\_reboot\_severity) | Sets the severity of the error/warning when `automatic_reboot` is `false` | `string` | `"error"` | no |
 | <a name="input_balloon"></a> [balloon](#input\_balloon) | The minimum amount of memory to allocate to the VM in Megabytes, when Automatic Memory Allocation is desired | `number` | `0` | no |
 | <a name="input_bios"></a> [bios](#input\_bios) | The BIOS to use, options are seabios or ovmf for UEFI | `string` | `"seabios"` | no |
+| <a name="input_boot"></a> [boot](#input\_boot) | The boot order for the VM. For example: order=scsi0;ide2;net0 | `string` | `null` | no |
 | <a name="input_bootdisk"></a> [bootdisk](#input\_bootdisk) | Enable booting from specified disk | `string` | `null` | no |
 | <a name="input_ci_wait"></a> [ci\_wait](#input\_ci\_wait) | How to long in seconds to wait for before provisioning | `number` | `30` | no |
 | <a name="input_cicustom"></a> [cicustom](#input\_cicustom) | Instead specifying ciuser, cipasword, etc. you can specify the path to a custom cloud-init config file here | `string` | `null` | no |
@@ -79,32 +80,36 @@ No modules.
 | <a name="input_os_type"></a> [os\_type](#input\_os\_type) | Which provisioning method to use, based on the OS type | `string` | `null` | no |
 | <a name="input_pci"></a> [pci](#input\_pci) | The pci block is used to configure PCI devices | `list(any)` | `[]` | no |
 | <a name="input_pool"></a> [pool](#input\_pool) | The resource pool to which the VM will be added | `string` | `null` | no |
+| <a name="input_power_state"></a> [power\_state](#input\_power\_state) | Power state of the guest, can be running or stopped | `string` | `null` | no |
 | <a name="input_protection"></a> [protection](#input\_protection) | Enable/disable the VM protection from being removed | `bool` | `false` | no |
 | <a name="input_pxe"></a> [pxe](#input\_pxe) | If set to true, enable PXE boot of the VM | `bool` | `null` | no |
 | <a name="input_qemu_os"></a> [qemu\_os](#input\_qemu\_os) | The type of OS in the guest | `string` | `"l26"` | no |
+| <a name="input_rng"></a> [rng](#input\_rng) | The RNG device to add to the VM | `map(any)` | `{}` | no |
 | <a name="input_scsihw"></a> [scsihw](#input\_scsihw) | The SCSI controller to emulate | `string` | `"lsi"` | no |
 | <a name="input_searchdomain"></a> [searchdomain](#input\_searchdomain) | Sets default DNS search domain suffix | `string` | `null` | no |
 | <a name="input_serial"></a> [serial](#input\_serial) | The serial block is used to configure the serial devices | `list(any)` | `[]` | no |
 | <a name="input_skip_ipv4"></a> [skip\_ipv4](#input\_skip\_ipv4) | Tells proxmox that acquiring an IPv4 address from the qemu guest agent isn't required, it will still return an ipv4 address if it could obtain one | `bool` | `null` | no |
 | <a name="input_skip_ipv6"></a> [skip\_ipv6](#input\_skip\_ipv6) | Tells proxmox that acquiring an IPv6 address from the qemu guest agent isn't required, it will still return an ipv6 address if it could obtain one | `bool` | `null` | no |
+| <a name="input_smbios"></a> [smbios](#input\_smbios) | SMBIOS type 1 settings for the VM | `map(any)` | `{}` | no |
 | <a name="input_ssh_forward_ip"></a> [ssh\_forward\_ip](#input\_ssh\_forward\_ip) | The IP (and optional colon separated port), to use to connect to the host for preprovisioning | `string` | `null` | no |
 | <a name="input_ssh_private_key"></a> [ssh\_private\_key](#input\_ssh\_private\_key) | The private key to use when connecting to the guest for preprovisioning | `string` | `null` | no |
 | <a name="input_ssh_user"></a> [ssh\_user](#input\_ssh\_user) | The user with which to connect to the guest for preprovisioning | `string` | `null` | no |
 | <a name="input_sshkeys"></a> [sshkeys](#input\_sshkeys) | Newline delimited list of SSH public keys to add to authorized keys file for the cloud-init user | `string` | `null` | no |
 | <a name="input_start_at_node_boot"></a> [start\_at\_node\_boot](#input\_start\_at\_node\_boot) | Whether the guest should start automatically when the Proxmox node boots | `bool` | `false` | no |
+| <a name="input_startup_shutdown"></a> [startup\_shutdown](#input\_startup\_shutdown) | Startup and shutdown configuration of the guest | `map(any)` | `{}` | no |
 | <a name="input_tablet"></a> [tablet](#input\_tablet) | Enable/disable the USB tablet device | `bool` | `true` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags of the VM | `string` | `null` | no |
 | <a name="input_target_node"></a> [target\_node](#input\_target\_node) | The name of the Proxmox Node on which to place the VM | `string` | `null` | no |
 | <a name="input_target_nodes"></a> [target\_nodes](#input\_target\_nodes) | A list of PVE node names on which to place the VM | `list(string)` | `null` | no |
+| <a name="input_tpm_state"></a> [tpm\_state](#input\_tpm\_state) | The TPM device to add to the VM | `map(any)` | `{}` | no |
 | <a name="input_usb"></a> [usb](#input\_usb) | The usb block is used to configure USB devices | `list(any)` | `[]` | no |
 | <a name="input_vga"></a> [vga](#input\_vga) | The vga block is used to configure the display device | `list(any)` | `[]` | no |
-| <a name="input_vm_state"></a> [vm\_state](#input\_vm\_state) | The desired state of the VM, options are running, stopped and started | `string` | `"running"` | no |
 | <a name="input_vmid"></a> [vmid](#input\_vmid) | The ID of the VM in Proxmox | `number` | `null` | no |
 
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_default_ipv4_address"></a> [default\_ipv4\_address](#output\_default\_ipv4\_address) | The default IPv4 address |
 | <a name="output_default_ipv6_address"></a> [default\_ipv6\_address](#output\_default\_ipv6\_address) | The default IPv6 address |
 | <a name="output_ssh_host"></a> [ssh\_host](#output\_ssh\_host) | The hostname or IP to use to connect to the VM for preprovisioning |
