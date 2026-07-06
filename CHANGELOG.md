@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.7.0](https://gitlab.com/terraform-child-modules-48151/terraform-proxmox-vm_qemu/compare/v1.6.0...v1.7.0) (2026-07-06)
+
 ## [1.6.0](https://gitlab.com/terraform-child-modules-48151/terraform-proxmox-vm_qemu/compare/v1.5.0...v1.6.0) (2026-02-06)
 
 ### Features
